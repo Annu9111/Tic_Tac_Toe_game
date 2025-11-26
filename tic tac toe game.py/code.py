@@ -10,4 +10,17 @@ def check_winner():
             messagebox.showinfo("tic-tac-toe",f"player {buttons[combo[0]]["text"]} wins")
             root.quit()
             
-def button_click(index)            
+def button_click(index):
+    if buttons[index]["text"]=="" not winner:
+        buttons[index]["text"]=current_player
+        check_winner()
+        toggle_player()
+        
+def toggle_player():
+    global current_player
+    current_player="X" if current_player=="o" else "o"
+    label.config(text=f"player {current_player} turn")
+    
+root=tk.Tk()
+root.title("tic-tac-toe")
+                        
