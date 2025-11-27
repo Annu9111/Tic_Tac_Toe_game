@@ -11,7 +11,7 @@ def check_winner():
             root.quit()
             
 def button_click(index):
-    if buttons[index]["text"]=="" not winner:
+    if buttons[index]["text"]=="" and not winner:
         buttons[index]["text"]=current_player
         check_winner()
         toggle_player()
@@ -23,4 +23,15 @@ def toggle_player():
     
 root=tk.Tk()
 root.title("tic-tac-toe")
+buttons=[tk.Button(root,text="",font=("normal",25),width=6,height=2,command=lambda i=i:button_click(i)) for i in range(9)]
+
+for i ,button in enumerate(buttons):
+    button.grid(row=i//3 ,column=i%3)
+    
+current_player="X"
+winner=False
+label=tk.Label(root,text=f"player {current_player} turn ",font=("normal",16))
+label.grid(row=3,column=0,columnspan=3)
+
+root.mainloop()     
                         
